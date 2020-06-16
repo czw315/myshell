@@ -1,0 +1,15 @@
+编译：
+#pwd: myshell
+cd lib
+make
+cd ../shell
+make
+
+使用：
+#pwd: shell
+./shell
+#input your cmd
+...
+...
+...
+exit or CTRL+D可退出
