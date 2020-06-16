@@ -28,7 +28,6 @@ void cmdexec(const char *buf, char*	args[MAX_ARG], struct cmd_feature* cmdfea){
     if (cmdfea->isbg) 
         signal(SIGCHLD, SIG_IGN);            //if run back, let process ignore the child signal
     else {
-        printf("%ld\n",(long)pid);
         if ((pid = waitpid(pid, &status, WUNTRACED)) < 0&&errno!=ECHILD)
         err_sys("waitpid error");
     }

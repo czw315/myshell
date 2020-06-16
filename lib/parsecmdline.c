@@ -1,5 +1,6 @@
 #include "shell_hdr.h"
 #include<fcntl.h>
+#include<sys/stat.h>
 
 int parsecmdline(char *command, char* args[],struct cmd_feature* cmdfea) { // 以空格分割命令， 返回分割得到的字符串个数
     char buf[MAXLINE];
@@ -37,7 +38,8 @@ int parsecmdline(char *command, char* args[],struct cmd_feature* cmdfea) { // �
         }else if(strcmp(args[i],">")==0){
             outredi_times++;
             if(outredi_times==1&&i+1<num){
-                cmdfea->out_fd=open(args[++i],O_WRONLY);
+                cmdfea->out_fd=open(args[++i],O_WRONLY|O_TRUNC|O_CREAT,
+                                    S_IWUSR|S_IRUSR|S_IRGRP|S_IROTH);
                 if(cmdfea->out_fd==-1){
                     err_ret("outredi open error");
                     return -1;
