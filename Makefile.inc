@@ -11,11 +11,6 @@ LINUX_LIBCAP = -lcap
 IMPL_CFLAGS = -std=c99 -D_XOPEN_SOURCE=600 \
 	        -D_DEFAULT_SOURCE \
 		-g -I${SHELL_INCL_DIR} \
-		-pedantic \
-		-Wall \
-		-W \
-		-Wno-sign-compare \
-		-Wno-unused-parameter
 
 CFLAGS = ${IMPL_CFLAGS}
 
